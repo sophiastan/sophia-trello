@@ -17,21 +17,70 @@ body {
   flex-direction: column;
 }
 
-.header {
+.board-header {
   width: 100%;
   flex-direction: row;
   /* background-color: aqua; */
 }
 
 .header-tab {
-  background-color: #E4E7EB;
+  background-color: rgba(0,0,0,.08);
   font-size: 14px !important;
+}
+
+.header-tab:hover {
+  background-color: rgba(0,0,0,.15) !important;
 }
 
 .board {
   flex-direction: row;
   padding-bottom: 8px;
   margin-bottom: 8px;
+}
+
+.add-list {
+  width: 272px;
+  margin: 0 4px;
+  padding: 6px 8px;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 3px;
+  background-color: rgba(0,0,0,.08);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.add-list:hover {
+  background-color: rgba(0,0,0,.04);
+}
+
+.list-form {
+  width: 272px;
+  height: auto;
+  min-height: 32px;
+  margin: 0 4px;
+  padding: 4px;
+  background-color: #ebecf0;
+}
+
+.list-text {
+  width: 100% !important;
+}
+
+.list-btn {
+  background-color: #5aac44;
+  box-shadow: none;
+  border: none;
+  color: #fff;
+  height: 32px;
+  padding: 4px 12px;
+  margin-top: 4px;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.list-btn:hover {
+  background-color: #66ba50;
 }
 
 .list-wrapper {
@@ -64,10 +113,10 @@ body {
 .card-list {
   margin: 0 4px;
   padding: 0 4px;
-
 }
 
 .card {
+  clear: both;
   overflow: hidden;
   padding : 6px 8px 4px;
   background-color: #fff;
@@ -78,7 +127,7 @@ body {
   margin-bottom: 8px;
   max-width: 300px;
   min-height: 20px;
-  height: 100%;
+  word-wrap: break-word;
 }
 
 .card:hover {

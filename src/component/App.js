@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Board from './Board';
+import Board from './board/Board';
 import Header from './Header';
 
 class App extends Component {

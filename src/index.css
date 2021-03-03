@@ -20,7 +20,9 @@ body {
 .board-header {
   width: 100%;
   flex-direction: row;
+  align-items: flex-end;
   /* background-color: aqua; */
+  margin-bottom: 0;
 }
 
 .header-tab {
@@ -54,17 +56,45 @@ body {
   background-color: rgba(0,0,0,.04);
 }
 
+.add-card {
+  display: flex;
+  color: #5e6c84;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 4px 8px;
+  margin: 2px 0 8px 0;
+  cursor: pointer;
+  align-items: center;
+}
+
+.add-card:hover {
+  background-color: rgba(0,0,0,.04);
+}
+
+.card-form {
+  width: 100%;
+  height: auto;
+  min-height: 32px;
+  margin-bottom: 8px;
+  padding: 4px;
+}
+
 .list-form {
   width: 272px;
   height: auto;
   min-height: 32px;
-  margin: 0 4px;
   padding: 4px;
   background-color: #ebecf0;
 }
 
 .list-text {
   width: 100% !important;
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
 }
 
 .list-btn {
@@ -74,7 +104,7 @@ body {
   color: #fff;
   height: 32px;
   padding: 4px 12px;
-  margin-top: 4px;
+  margin-right: 20px;
   font-size: 14px;
   border-radius: 3px;
 }
@@ -134,7 +164,7 @@ body {
   background-color: #F9F9FB;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .main, .header, .board {
     flex-direction: column;
   }

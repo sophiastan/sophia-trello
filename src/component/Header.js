@@ -1,30 +1,25 @@
 import React, { Component } from 'react';
-import { Tablist, Tab, StarEmptyIcon, HatIcon, AlignmentTopIcon, ChevronDownIcon, MoreIcon } from 'evergreen-ui';
+import { Tablist, Tab, LayoutGridIcon, HomeIcon, ControlIcon, SearchIcon, PlusIcon, InfoSignIcon, BadgeIcon } from 'evergreen-ui';
 import logo from '../images/prairieHealthLogo.png';
 
 class Header extends Component {
   render() {
     return (
-      <Tablist className='board-header' marginBottom={4}>
-        <Tab className='header-tab'><AlignmentTopIcon marginRight={6} />Board<ChevronDownIcon marginLeft={6} /></Tab>
-        <Tab className='header-tab'>Test</Tab>
-        <Tab className='header-tab'><StarEmptyIcon /></Tab>
-        <Tab className='header-tab'>Prairie Health</Tab>
-        <Tab className='header-tab'>Team Visible</Tab>
-        <Tab>
-          <img src={logo}
-            className='header-tab'
-            style={{ borderRadius: '100px' }}
-            alt='logo' />
-        </Tab>
-        <Tab className='header-tab'>Invite</Tab>
+      <Tablist className='app-header' marginBottom={4}>
+        <Tab className='app-header-tab'><LayoutGridIcon color="white" /></Tab>
+        <Tab className='app-header-tab'><HomeIcon color="white" /></Tab>
+        <Tab className='app-header-tab'><ControlIcon marginRight={6} color="white" /><b>Boards</b></Tab>
+        <Tab className='app-header-tab' style={{ cursor: 'text' }}>Jump to...<span style={{width: "70px"}}></span><SearchIcon marginLeft={6} color="white" /></Tab>
         <div style={{ flexGrow: '1' }}></div>
-        <div style={{ display: 'flex' }}>
-          <Tab className='header-tab'><HatIcon marginRight={10} />Butler</Tab>
-          <Tab className='header-tab' onClick={this.openNav}>
-            <MoreIcon color='muted' marginRight={10} />Show Menu
-          </Tab>
-        </div>
+        <Tab className='app-header-tab'> <ControlIcon marginRight={6} color="hsla(0,0%,100%,.5)" /><span style={{ fontSize: '22px', color: 'hsla(0,0%,100%,.5)'}}>Trello</span></Tab>
+        <div style={{ flexGrow: '1' }}></div>
+        <Tab className='app-header-tab'><PlusIcon color="white"  /></Tab>
+        <Tab className='app-header-tab'><InfoSignIcon color="white" /></Tab>
+        <Tab className='app-header-tab'><BadgeIcon color="white" /></Tab>
+        <img src={logo}
+            className='app-header-tab'
+            style={{ borderRadius: '100px' }}
+            alt='logo' /> 
       </Tablist>
     );
   }

@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-// import EditableLabel from 'react-editable-label';
-import { CrossIcon } from 'evergreen-ui';
+import EditableLabel from 'react-editable-label';
+import { Dialog, Pane } from 'evergreen-ui';
+import { IoArchiveOutline } from 'react-icons/io5';
 
 export const Card = (props) => {
   const [taskText, setTaskText] = useState(props.taskText);
+  const [ isShown, setIsShown ] = useState(false);
   // console.log(props);
 
-  // const saveTaskText = (value) => {
-  //   setTaskText(value);
+  const saveTaskText = (value) => {
+    setTaskText(value);
 
-  //   props.editTaskText(value, props.listNumber)
-  // }
+    props.editTaskText(value, props.listNumber)
+  }
 
   const deleteTask = () => {
     console.log(props.listNumber);
@@ -19,10 +21,24 @@ export const Card = (props) => {
   }
 
   return (
-    <div className='card'>
-      {/* <EditableLabel initialValue={taskText} save={value => saveTaskText(value)} /> */}
+    <div onClick={() => setIsShown(true)} className='card'>
       <label style={{ marginRight: '50px' }}>{taskText}</label>
-      <button onClick={deleteTask}><CrossIcon/></button>
+      <Dialog
+        isShown={isShown}
+        title={props.taskText}
+        onCloseComplete={() => setIsShown(false)}
+      >
+        <Pane>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <label style={{ marginBottom: '8px' }}><b>Change Card Name: </b></label>
+            <EditableLabel initialValue={taskText} 
+              save={value => saveTaskText(value)} />
+            <button className='card-btn' onClick={deleteTask}>
+              <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
+            </button>
+            </div>
+          </Pane>
+      </Dialog>
     </div>
   );
 }

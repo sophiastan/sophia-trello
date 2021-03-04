@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { TextInput, PlusIcon, CrossIcon } from 'evergreen-ui';
+import { IoCardSharp } from 'react-icons/io5';
 
 class AddCard extends Component {
   constructor(props) {
@@ -30,7 +31,11 @@ class AddCard extends Component {
     if(!this.state.editing) {
       return (
         <div className='add-card' onClick={() => this.setEditing(true)}>
-          <PlusIcon marginRight={6} />Add another card</div>  
+          <PlusIcon marginRight={6} />
+          Add another card
+          <div style={{ flexGrow: '1' }}></div>
+          <IoCardSharp color='grey' />
+        </div>  
         ); 
     }
       return (

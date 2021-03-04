@@ -5,13 +5,13 @@ import logo from '../../images/prairieHealthLogo.png';
 
 class BoardHeader extends Component {
 
-openNav() {
-  document.getElementById('mySidenav').style.width = '300px';
-}
+  openNav() {
+    document.getElementById('mySidenav').style.width = '339px';
+  }
 
-closeNav() {
-  document.getElementById('mySidenav').style.width = '0';
-}
+  closeNav() {
+    document.getElementById('mySidenav').style.width = '0';
+  }
 
   render() {
     return (
@@ -34,9 +34,14 @@ closeNav() {
           <Tab className='header-tab' onClick={this.openNav}>
             <MoreIcon color='muted' marginRight={10} />Show Menu
           </Tab>
-          <div id='mySidenav' className='sidenav'>
-            <a href='/'>Menu</a>
-            <a href='javascript:void(0)' className='closebtn' onClick={this.closeNav}>&times;</a>
+          <div id='mySidenav' className='board-menu'>
+            <div className='board-menu-header'>
+              <h3 className='board-menu-header-title'>Menu</h3>
+              <div className='closebtn' onClick={this.closeNav}>&times;</div>
+            </div>
+            <hr className='board-menu-header-divider' />
+            <div className='board-menu-content'>
+            </div>
           </div>
         </div>
       </Tablist>

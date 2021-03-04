@@ -2,82 +2,38 @@ import React, { Component } from 'react';
 import BoardHeader from './BoardHeader';
 import List from './List';
 import AddList from './AddList';
+import defaultList from './defaultList';
 
 class Board extends Component {
+  boardList = defaultList;
+
   constructor(props) {
     super(props);
-    if (localStorage.getItem('lists')) {
-      const rawLS = localStorage.getItem('lists');
-      const parsedLS = JSON.parse(rawLS);
-      this.state = { lists: parsedLS }
-    } else {
-      this.state = {
-        createList: false,
-        lists: [
-          {
-            id: 0,
-            title: 'To Do',
-            cards: [{
-              taskText: 'Example Task 1',
-              listNumber: 0,
-              timeId: 0
-            },
-            {
-              taskText: 'Example Task 2',
-              listNumber: 0,
-              timeId: 1
-            }]
-          },
-          {
-            id: 1,
-            title: 'Doing',
-            cards: [{
-              taskText: 'WIP',
-              listNumber: 1,
-              timeId: 2
-            }]
-          },
-          {
-            id: 2,
-            title: 'Done',
-            cards: [{
-              taskText: 'Complete Task 1',
-              listNumber: 2,
-              timeId: 3
-            }]
-          }
-        ]
-      }
-      localStorage.setItem('lists', JSON.stringify(this.state.lists))
+    this.state = {
+      createList: false,
+      lists: this.boardList
     }
   }
 
-  // Add new list
+  // Add new list GET RID OF ID
   addList(title, id) {
-    const rawLS = localStorage.getItem('lists');
-    const parsedLS = JSON.parse(rawLS);
-
     const newList = {
       id: Date.now(),
       title,
       cards: []
     }
 
-    parsedLS.push(newList);
+    this.boardList.push(newList);
 
     // Sync state and localStorage
     this.setState({
-      lists: parsedLS
+      lists: this.boardList
     })
-    localStorage.setItem('lists', JSON.stringify(parsedLS));
   }
 
   // Edit list title
   editTitleList(title, id) {
-    const rawLS = localStorage.getItem('lists');
-    const parsedLS = JSON.parse(rawLS);
-
-    for (let item of parsedLS) {
+    for (let item of this.boardList) {
       if (item.id === id) {
         item.title = title;
       }
@@ -85,63 +41,51 @@ class Board extends Component {
 
     // Sync state and localStorage
     this.setState({
-      lists: parsedLS
-    })
-    localStorage.setItem('lists', JSON.stringify(parsedLS));
+      lists: this.boardList
+    });
   }
 
   // Add new list
   deleteList(id) {
-    const rawLS = localStorage.getItem('lists');
-    const parsedLS = JSON.parse(rawLS);
-
-    parsedLS.pop(parsedLS[id]);
+    this.boardList.pop(this.boardList[id]);
 
     // Sync state and localStorage
     this.setState({
-      lists: parsedLS
+      lists: this.boardList
     })
-    localStorage.setItem('lists', JSON.stringify(parsedLS));
   }
 
   // Add new cards
   addCard(taskText, listNumber) {
-    const rawLS = localStorage.getItem('lists');
-    const parsedLS = JSON.parse(rawLS);
-
     const newTask = {
       taskText,
       listNumber,
       timeId: new Date().valueOf()
     }
 
-    if (!parsedLS[listNumber]) {
-      for (let item of parsedLS) {
+    if (!this.boardList[listNumber]) {
+      for (let item of this.boardList) {
         if (item.id === listNumber) {
           item.cards.push(newTask);
         }
       }
     }
     else {
-      parsedLS[listNumber].cards.push(newTask);
+      this.boardList[listNumber].cards.push(newTask);
     }
 
     // Sync state and localStorage
     this.setState({
-      lists: parsedLS
+      lists: this.boardList
     })
-    localStorage.setItem('lists', JSON.stringify(parsedLS));
   }
 
   // Add new list
   deleteCard(listNumber, timeId) {
-    const rawLS = localStorage.getItem('lists');
-    const parsedLS = JSON.parse(rawLS);
-
     console.log('listNumber ', listNumber);
     console.log('timeId ', timeId);
 
-    for (let item of parsedLS) {
+    for (let item of this.boardList) {
       if (item.id === listNumber) {
         for (let card of item.cards) {
           if (card.timeId === timeId) {
@@ -151,27 +95,23 @@ class Board extends Component {
       }
     }
 
-    console.log(parsedLS);
+    console.log(this.boardList);
 
     // Sync state and localStorage
     this.setState({
-      lists: parsedLS
+      lists: this.boardList
     })
-    localStorage.setItem('lists', JSON.stringify(parsedLS));
   }
 
   // Edit card text
   editTaskText(taskText, listNumber) {
-    const rawLS = localStorage.getItem('lists');
-    const parsedLS = JSON.parse(rawLS);
-
-    if (parsedLS[listNumber]) {
-      for (let item of parsedLS[listNumber].cards) {
+    if (this.boardList[listNumber]) {
+      for (let item of this.boardList[listNumber].cards) {
         item.taskText = taskText
       }
     }
     else {
-      for (let item of parsedLS) {
+      for (let item of this.boardList) {
         if (item.id === listNumber) {
           console.log(item.cards[listNumber]);
           // item.taskText = taskText;
@@ -183,9 +123,8 @@ class Board extends Component {
 
     // Sync state and localStorage
     this.setState({
-      lists: parsedLS
+      lists: this.boardList
     })
-    localStorage.setItem('lists', JSON.stringify(parsedLS));
   }
 
   render() {

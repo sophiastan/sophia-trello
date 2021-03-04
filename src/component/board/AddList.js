@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput, PlusIcon, CrossIcon } from 'evergreen-ui';
 
-class AddCard extends Component {
+class AddList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,4 +45,4 @@ class AddCard extends Component {
   }
 }
 
-export default AddCard
+export default AddList;

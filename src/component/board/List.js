@@ -8,7 +8,7 @@ class List extends Component {
   render() {
     const cards = this.props.cards.map((card, index) => {
       return (
-        <Card key={index} {...card} onDragStart={this.props.onDragStart} /> 
+        <Card key={index} {...card} /> 
       );
     })
       
@@ -21,9 +21,8 @@ class List extends Component {
           </div>
           <div className='card-list'>
             {cards}
-            <AddCard formNum={this.props.id} onAdd={this.props.onAdd} />
-          </div>
-          
+            <AddCard formNum={this.props.id} addCard={this.props.addCard} />
+          </div>      
         </div>
       </div>
     );

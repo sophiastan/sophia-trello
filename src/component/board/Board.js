@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BoardHeader from './BoardHeader';
-// import { PlusIcon, TextInput } from 'evergreen-ui';
 import List from './List';
+import AddList from './AddList';
 
 class Board extends Component {
   constructor(props) {
@@ -52,7 +52,27 @@ class Board extends Component {
     }
   }
 
-  // Add new task cards
+  // Add new list
+  addList(title, id) {
+    const rawLS = localStorage.getItem('lists');
+    const parsedLS = JSON.parse(rawLS);
+
+    const newList = {
+      id: Date.now(),
+      title,
+      cards: []
+    }
+
+    parsedLS.push(newList);
+
+    // Sync state and localStorage
+    this.setState({
+      lists: parsedLS
+    })
+    localStorage.setItem('lists', JSON.stringify(parsedLS));
+  }
+
+  // Add new cards
   addCard(taskText, listNumber) {
     const rawLS = localStorage.getItem('lists');
     const parsedLS = JSON.parse(rawLS);
@@ -63,7 +83,16 @@ class Board extends Component {
       timeId: new Date().valueOf()
     }
 
-    parsedLS[listNumber].cards.push(newTask);
+    if (!parsedLS[listNumber]) {
+      for (let item of parsedLS) { 
+        if (item.id === listNumber) {
+          item.cards.push(newTask);
+        }
+      }
+    }
+    else {
+      parsedLS[listNumber].cards.push(newTask);
+    }
 
     // Sync state and localStorage
     this.setState({
@@ -76,7 +105,7 @@ class Board extends Component {
     const lists = this.state.lists.map((list, index) => (
       <List {...list}
         key={index}
-        onAdd={(taskText, listNumber) => this.addCard(taskText, listNumber)}
+        addCard={(taskText, listNumber) => this.addCard(taskText, listNumber)}
       />
     ));
 
@@ -85,14 +114,7 @@ class Board extends Component {
         <BoardHeader />
         <div className='board'>
           {lists}
-          {/* <div className='add-list' hidden={this.state.createList} onClick={this.setState({ createList: true })}><PlusIcon marginRight={6} />Add a list</div>
-          {
-            this.state.createList &&
-            <div className='list-form'>
-              <TextInput className='list-text' placeholder='Enter list title...' />
-              <button className='list-btn'>Add List</button>
-            </div>
-          } */}
+          <AddList addList={(title, id) => this.addList(title, id)} />
         </div>
       </div>
 

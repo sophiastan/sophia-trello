@@ -11,11 +11,11 @@ class AddCard extends Component {
 
   onSubmit(event) {
     event.preventDefault();
-    const taskText = this.textInput.value.trim();
-    const listNumber = this.props.formNum;
-    console.log(listNumber);
-    if (taskText && this.props.addCard) {
-      this.props.addCard(taskText, listNumber);
+    const title = this.textInput.value.trim();
+    const id = this.props.id;
+    console.log(id);
+    if (title && this.props.addList) {
+      this.props.addList(title, id);
     }
     this.textInput.value = '';
   }
@@ -29,15 +29,15 @@ class AddCard extends Component {
   render() {
     if(!this.state.editing) {
       return (
-        <div className='add-card' onClick={() => this.setEditing(true)}>
-          <PlusIcon marginRight={6} />Add another card</div>  
+        <div className='add-list' onClick={() => this.setEditing(true)}>
+          <PlusIcon marginRight={6} />Add another list</div>  
         ); 
     }
       return (
-        <form className='card-form' onSubmit={(e) => this.onSubmit(e)}>
-          <TextInput className='list-text' ref={input => this.textInput = input} aria-label="Add a task" />
+        <form className='list-form' onSubmit={(e) => this.onSubmit(e)}>
+          <TextInput className='list-text' ref={input => this.textInput = input} aria-label="Enter list title..." />
           <div className='btn-group'>
-            <button className='list-btn'>Add Card</button>
+            <button className='list-btn'>Add List</button>
             <CrossIcon onClick={() => this.setEditing(false)} />
           </div>
         </form>

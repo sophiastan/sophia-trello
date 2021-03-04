@@ -217,16 +217,16 @@ body {
 
 /* SIDENAV */
 .board-menu {
-  width: 0;
+  width: 339px;
   box-shadow: 0 12px 24px -6px rgb(9 30 66 / 25%), 0 0 0 1px rgb(9 30 66 / 8%);
   transform: translateX(0);
   bottom: 0;
-  position: absolute;
-  right: 0;
+  /* position: absolute; */
+  /* right: 0;
   top: 0;
+  z-index: 5; */
   transition-duration: .1s;
   transition-timing-function: ease-in;
-  z-index: 5;
   background-color: #f4f5f7;
   flex: 1;
   display: flex;

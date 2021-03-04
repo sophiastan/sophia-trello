@@ -5,8 +5,7 @@ import logo from '../../images/prairieHealthLogo.png';
 class BoardHeader extends Component {
   render() {
     return (
-      <div className='board-header'>
-        <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
+        <Tablist className='board-header' marginBottom={4}>
           <Tab className='header-tab'><AlignmentTopIcon marginRight={6} />Board<ChevronDownIcon marginLeft={6} /></Tab>
           <Tab style={{ fontSize: '18px' }}><b>Test</b></Tab>
           <Tab className='header-tab'><StarEmptyIcon /></Tab>
@@ -21,7 +20,6 @@ class BoardHeader extends Component {
           <Tab className='header-tab'><HatIcon marginRight={10} />Butler</Tab>
           <Tab className='header-tab'><MoreIcon color="muted" marginRight={10} />Show Menu</Tab>
         </Tablist>
-      </div>
     );
   }
 }

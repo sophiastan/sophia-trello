@@ -95,14 +95,13 @@ class Board extends Component {
     const rawLS = localStorage.getItem('lists');
     const parsedLS = JSON.parse(rawLS);
 
-    console.log('id', id);
-    console.log('parsedLS ', parsedLS);
+    parsedLS.pop(parsedLS[id]);
 
-    // // Sync state and localStorage
-    // this.setState({
-    //   lists: parsedLS
-    // })
-    // localStorage.setItem('lists', JSON.stringify(parsedLS));
+    // Sync state and localStorage
+    this.setState({
+      lists: parsedLS
+    })
+    localStorage.setItem('lists', JSON.stringify(parsedLS));
   }
 
   // Add new cards
@@ -144,14 +143,14 @@ class Board extends Component {
         item.taskText = taskText
       }
     }
-    // else {
-    //   for (let item of parsedLS) {
-    //     if (item.id === listNumber) {
-    //       console.log(item.cards[listNumber]);
-    //       // item.taskText = taskText;
-    //     }
-    //   }
-    // }
+    else {
+      for (let item of parsedLS) {
+        if (item.id === listNumber) {
+          console.log(item.cards[listNumber]);
+          // item.taskText = taskText;
+        }
+      }
+    }
 
     // console.log(parsedLS);
 

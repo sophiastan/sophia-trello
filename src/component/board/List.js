@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Card from './Card';
 import AddCard from './AddCard';
-import { MoreIcon } from 'evergreen-ui';
+import { SelectMenu, MoreIcon, Position } from 'evergreen-ui';
 import EditableLabel from 'react-editable-label';
 
 class List extends Component {
@@ -23,24 +23,35 @@ class List extends Component {
   }
 
   render() {
-    console.log(this.state.title);
     const cards = this.props.cards.map((card, index) => {
       return (
-        <Card key={index} {...card} /> 
+        <Card key={index} {...card} editTaskText={this.props.editTaskText} />
       );
     })
-      
+
     return (
       <div className='list-wrapper'>
         <div className='list'>
           <div className='list-header'>
-            <EditableLabel initialValue={this.state.title} save={value => this.saveTitle(value)} />
-            <MoreIcon color="muted" marginLeft={190} />
+            <EditableLabel
+              inputClass='list-header-title-input'
+              labelClass='list-header-title-label'
+              initialValue={this.state.title}
+              save={value => this.saveTitle(value)} />
+            <SelectMenu
+              title='List Actions'
+              hasFilter={false}
+              position={Position.BOTTOM_LEFT}
+              options={
+                [{ label: 'Add Card...', value: '' }, { label: 'Archive This List', value: '' }]
+              }>
+              <MoreIcon color="muted" />
+            </SelectMenu>
           </div>
           <div className='card-list'>
             {cards}
             <AddCard formNum={this.props.id} addCard={this.props.addCard} />
-          </div>      
+          </div>
         </div>
       </div>
     );

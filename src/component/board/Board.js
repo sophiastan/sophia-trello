@@ -72,22 +72,16 @@ class Board extends Component {
     localStorage.setItem('lists', JSON.stringify(parsedLS));
   }
 
-  // Add new list
+  // Edit list title
   editTitleList(title, id) {
     const rawLS = localStorage.getItem('lists');
     const parsedLS = JSON.parse(rawLS);
-
-    console.log(parsedLS);
-    console.log('title ', title);
-    console.log('id ', id);
 
     for (let item of parsedLS) {
       if (item.id === id) {
         item.title = title;
       }
     }
-
-    console.log('newparsedLS ', parsedLS);
 
     // Sync state and localStorage
     this.setState({
@@ -101,7 +95,8 @@ class Board extends Component {
     const rawLS = localStorage.getItem('lists');
     const parsedLS = JSON.parse(rawLS);
 
-    console.log(parsedLS);
+    console.log('id', id);
+    console.log('parsedLS ', parsedLS);
 
     // // Sync state and localStorage
     // this.setState({
@@ -139,13 +134,42 @@ class Board extends Component {
     localStorage.setItem('lists', JSON.stringify(parsedLS));
   }
 
+  // Edit card text
+  editTaskText(taskText, listNumber) {
+    const rawLS = localStorage.getItem('lists');
+    const parsedLS = JSON.parse(rawLS);
+
+    if (parsedLS[listNumber]) {
+      for (let item of parsedLS[listNumber].cards) {
+        item.taskText = taskText
+      }
+    }
+    // else {
+    //   for (let item of parsedLS) {
+    //     if (item.id === listNumber) {
+    //       console.log(item.cards[listNumber]);
+    //       // item.taskText = taskText;
+    //     }
+    //   }
+    // }
+
+    // console.log(parsedLS);
+
+    // Sync state and localStorage
+    this.setState({
+      lists: parsedLS
+    })
+    localStorage.setItem('lists', JSON.stringify(parsedLS));
+  }
+
   render() {
     const lists = this.state.lists.map((list, index) => (
       <List {...list}
         key={index}
-        addCard={(taskText, listNumber) => this.addCard(taskText, listNumber)}
         editTitleList={(title, id) => this.editTitleList(title, id)}
         deleteList={(id) => this.deleteList(id)}
+        addCard={(taskText, listNumber) => this.addCard(taskText, listNumber)}
+        editTaskText={(taskText, listNumber) => this.editTaskText(taskText, listNumber)}
       />
     ));
 

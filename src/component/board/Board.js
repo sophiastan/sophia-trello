@@ -133,6 +133,33 @@ class Board extends Component {
     localStorage.setItem('lists', JSON.stringify(parsedLS));
   }
 
+  // Add new list
+  deleteCard(listNumber, timeId) {
+    const rawLS = localStorage.getItem('lists');
+    const parsedLS = JSON.parse(rawLS);
+
+    console.log('listNumber ', listNumber);
+    console.log('timeId ', timeId);
+
+    for (let item of parsedLS) {
+      if (item.id === listNumber) {
+        for (let card of item.cards) {
+          if (card.timeId === timeId) {
+            item.cards.pop(card);
+          }
+        }
+      }
+    }
+
+    console.log(parsedLS);
+
+    // Sync state and localStorage
+    this.setState({
+      lists: parsedLS
+    })
+    localStorage.setItem('lists', JSON.stringify(parsedLS));
+  }
+
   // Edit card text
   editTaskText(taskText, listNumber) {
     const rawLS = localStorage.getItem('lists');
@@ -168,6 +195,7 @@ class Board extends Component {
         editTitleList={(title, id) => this.editTitleList(title, id)}
         deleteList={(id) => this.deleteList(id)}
         addCard={(taskText, listNumber) => this.addCard(taskText, listNumber)}
+        deleteCard={(listNumber, timeId) => this.deleteCard(listNumber, timeId)}
         editTaskText={(taskText, listNumber) => this.editTaskText(taskText, listNumber)}
       />
     ));

@@ -31,7 +31,9 @@ class List extends Component {
   render() {
     const cards = this.props.cards.map((card, index) => {
       return (
-        <Card key={index} {...card} editTaskText={this.props.editTaskText} />
+        <Card key={index} {...card} 
+          editTaskText={this.props.editTaskText} 
+          deleteCard={this.props.deleteCard} />
       );
     })
 

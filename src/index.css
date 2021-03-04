@@ -35,25 +35,22 @@ body {
 }
 
 .board {
-  flex-direction: row;
+  flex-direction: row !important;
   padding-bottom: 8px;
   margin-bottom: 8px;
 }
 
 .add-list {
-  width: 272px;
-  margin: 0 4px;
-  padding: 6px 8px;
-  height: 100%;
+  padding: 10px 8px;
   box-sizing: border-box;
   border-radius: 3px;
   background-color: rgba(0,0,0,.08);
-  white-space: nowrap;
+  white-space: normal;
   cursor: pointer;
 }
 
 .add-list:hover {
-  background-color: rgba(0,0,0,.04);
+  background-color: rgba(0,0,0,.15);
 }
 
 .add-card {
@@ -80,12 +77,9 @@ body {
 }
 
 .list-form {
-  width: 272px;
-  height: auto;
-  min-height: 32px;
   padding: 4px;
-  background-color: rgba(0,0,0,.08);
-  /* background-color: #ebecf0; */
+  border-radius: 3px;
+  background-color: #ebecf0;
 }
 
 .list-text {
@@ -131,14 +125,16 @@ body {
   display: flex;
   flex-direction: column;
   max-height: 100%;
-  position: relative;
   white-space: normal;
 }
 
 .list-header {
-  flex: 0 0 auto;
+  /* flex: 0 0 auto; */
   padding: 10px 8px;
   min-height: 20px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
 }
 
 .card-list {

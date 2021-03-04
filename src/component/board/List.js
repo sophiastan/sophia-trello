@@ -11,7 +11,7 @@ class List extends Component {
     this.state = {
       title: this.props.title
     }
-    console.log(this.props);
+    // console.log(this.props);
   }
 
   saveTitle(value) {
@@ -20,6 +20,12 @@ class List extends Component {
     })
 
     this.props.editTitleList(value, this.props.id);
+  }
+
+  deleteList(item) {
+    if (item.value === 'Archive This List') {
+      this.props.deleteList(this.props.id);
+    }
   }
 
   render() {
@@ -43,9 +49,12 @@ class List extends Component {
               hasFilter={false}
               position={Position.BOTTOM_LEFT}
               options={
-                [{ label: 'Add Card...', value: '' }, { label: 'Archive This List', value: '' }]
-              }>
-              <MoreIcon color="muted" />
+                ['Add Card...', 'Archive This List']
+                  .map(label => ({ label, value: label }))
+              }
+              onSelect={item => this.deleteList(item)}
+            >
+              <MoreIcon color='muted' />
             </SelectMenu>
           </div>
           <div className='card-list'>

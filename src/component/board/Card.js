@@ -1,7 +1,20 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import EditableLabel from 'react-editable-label';
 import { Dialog, Pane } from 'evergreen-ui';
 import { IoArchiveOutline } from 'react-icons/io5';
+
+class Card extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      taskText: this.props.taskText,
+      isShown: false
+    }
+  }
+
+  
+}
 
 export const Card = (props) => {
   const [taskText, setTaskText] = useState(props.taskText);

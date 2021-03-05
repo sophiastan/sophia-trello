@@ -12,10 +12,8 @@ class AddList extends Component {
   onSubmit(event) {
     event.preventDefault();
     const title = this.textInput.value.trim();
-    const id = this.props.id;
-    console.log(id);
     if (title && this.props.addList) {
-      this.props.addList(title, id);
+      this.props.addList(title);
     }
     this.textInput.value = '';
   }
@@ -35,9 +33,9 @@ class AddList extends Component {
     }
       return (
         <form className='list-form' onSubmit={(e) => this.onSubmit(e)}>
-          <TextInput className='list-text' ref={input => this.textInput = input} aria-label="Enter list title..." />
+          <TextInput className='form-text' ref={input => this.textInput = input} aria-label="Enter list title..." />
           <div className='btn-group'>
-            <button className='list-btn'>Add List</button>
+            <button className='add-btn'>Add List</button>
             <CrossIcon onClick={() => this.setEditing(false)} />
           </div>
         </form>

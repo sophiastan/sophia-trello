@@ -11,7 +11,6 @@ class List extends Component {
     this.state = {
       title: this.props.title
     }
-    // console.log(this.props);
   }
 
   saveTitle(value) {
@@ -54,8 +53,7 @@ class List extends Component {
                 ['Add Card...', 'Archive This List']
                   .map(label => ({ label, value: label }))
               }
-              onSelect={item => this.deleteList(item)}
-            >
+              onSelect={item => this.deleteList(item)}>
               <MoreIcon color='muted' />
             </SelectMenu>
           </div>

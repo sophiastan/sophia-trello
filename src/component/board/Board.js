@@ -4,8 +4,11 @@ import List from './List';
 import AddList from './AddList';
 import defaultList from './DefaultList';
 
+/**
+ * Board adds and deletes list 
+ */
 class Board extends Component {
-
+  // Unique id helper
   nextId = 10;
 
   constructor(props) {
@@ -18,7 +21,7 @@ class Board extends Component {
 
   // Add new list
   addList(title) {
-    this.nextId++;
+    this.nextId++; // Creates unique id
     const newList = {
       id: this.nextId,
       title,
@@ -33,7 +36,7 @@ class Board extends Component {
     })
   }
 
-  // Add new list
+  // Delete list
   deleteList(id) {
     const boardList = this.state.lists.filter((item) => {
       return item.id !== id;
@@ -52,9 +55,6 @@ class Board extends Component {
         deleteList={(id) => this.deleteList(id)}
       />
     ));
-
-    console.log('render() lists: ');
-    console.log(this.state.lists);
 
     return (
       <div className='main'>

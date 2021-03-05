@@ -1,3 +1,20 @@
+/* 
+*  CSS TABLE OF CONTENTS
+*   
+*  1 - Body
+*  2 - Main
+*  3 - Header
+*  4 - Board Header
+*  5 - Board Menu
+*  6 - Board
+*  7 - Add List
+*  8 - List
+*  9 - Add Card
+*  10 - Card
+*  11 - Small Screen
+*/
+
+/*** 1 - Body ***/
 body {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
   background-color: aliceblue;
@@ -7,7 +24,7 @@ body {
 }
 
 
-/* MAIN */
+/*** 2 - Main ***/
 .main {
   height: 100%;
   display: flex;
@@ -15,7 +32,7 @@ body {
 }
 
 
-/* HEADER */
+/*** 3 - Header ***/
 .app-header {
   width: 100%;
   background-color: rgba(0,0,0,.32);
@@ -48,18 +65,18 @@ body {
 }
 
 
-/* BOARD HEADER */
+/*** 4 - Board Header ***/
 .board-header {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  padding: 8px 4px 4px 2px;
+  padding: 8px 4px 4px 8px;
 }
 
 .header-tab {
-  background-color: rgba(0,0,0,.08);
+  background-color: rgba(0,0,0,8);
   font-size: 14px !important;
   font-weight: 400 !important;
   min-height: 32px !important;
@@ -89,7 +106,7 @@ body {
 }
 
 
-/* BOARD MENU */
+/*** 5 - Board Menu ***/
 .board-menu {
   width: 339px;
   box-shadow: 0 12px 24px -6px rgb(9 30 66 / 25%), 0 0 0 1px rgb(9 30 66 / 8%);
@@ -167,7 +184,7 @@ body {
 }
 
 .board-menu-navigation-item:hover {
-  background-color: rgba(0,0,0,.08);
+  background-color: rgba(0,0,0,8);
 }
 
 .board-menu-navigation-item:active {
@@ -223,21 +240,21 @@ body {
   font-size: 30px;
 }
 
-
-/* BOARD */
+/*** 6 - Board ***/
 .board {
   flex-direction: row !important;
   padding-bottom: 8px;
   margin-bottom: 8px;
+  margin-left: 8px;
 }
 
 
-/* ADD LIST */
+/*** 7 - Add List ***/
 .add-list {
   padding: 10px 8px;
   box-sizing: border-box;
   border-radius: 3px;
-  background-color: rgba(0,0,0,.08);
+  background-color: rgba(0,0,0,8);
   white-space: normal;
   cursor: pointer;
 }
@@ -280,7 +297,7 @@ body {
 
 
 
-/* LIST */
+/*** 8 - List ***/
 .list-wrapper {
   width: 272px;
   margin: 4px 4px;
@@ -339,7 +356,7 @@ body {
 }
 
 
-/* ADD CARD */
+/*** 9 - Add Card ***/
 .add-card {
   display: flex;
   color: #5e6c84;
@@ -352,7 +369,7 @@ body {
 }
 
 .add-card:hover {
-  background-color: rgba(0,0,0,.04);
+  background-color: rgba(0,0,0,4);
 }
 
 .card-form {
@@ -364,7 +381,7 @@ body {
 }
 
 
-/* CARD */
+/*** 10 - Card ***/
 .card {
   flex-direction: row;
   clear: both;
@@ -385,7 +402,7 @@ body {
   background-color: #F9F9FB;
 }
 
-/* FOR SMALL SCREENS */
+/*** 11 - Small Screen ***/
 @media screen and (max-width: 600px) {
   .main, .header, .board, .board-header {
     flex-direction: column;

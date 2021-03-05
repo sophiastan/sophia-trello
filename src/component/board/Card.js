@@ -4,6 +4,9 @@ import { Dialog, Pane } from 'evergreen-ui';
 import EditableLabel from 'react-editable-label';
 import { IoArchiveOutline } from 'react-icons/io5';
 
+/**
+ * Represents a Card
+ */
 class Card extends Component {
   constructor(props) {
     super(props);
@@ -41,7 +44,7 @@ class Card extends Component {
           {this.state.taskText}
         </label>
         <button className='card-btn' onClick={this.deleteCard}>
-                <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
+          <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
           </button>
         {/* <Dialog
           isShown={this.state.isShown}

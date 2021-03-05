@@ -58,6 +58,7 @@ body {
   margin: 0px 4px !important;
   display: block;
 }
+
 .app-header-tab:nth-child(6) {
   background-color:rgba(0,0,0,0);
   color:  hsla(0,0%,100%,.3) !important;
@@ -188,10 +189,6 @@ body {
   background-color: rgba(0,0,0,8);
 }
 
-.board-menu-navigation-item:active {
-  background-color: red;
-}
-
 .board-menu-navigation-item-group {
   flex-direction: column;
   padding-left: 14px;
@@ -240,6 +237,7 @@ body {
   cursor: pointer;
   font-size: 30px;
 }
+
 
 /*** 6 - Board ***/
 .board {
@@ -295,7 +293,6 @@ body {
 .add-btn:hover {
   background-color: #66ba50;
 }
-
 
 
 /*** 8 - List ***/
@@ -425,7 +422,51 @@ body {
   text-align: left;
 }
 
+
 /*** 11 - Card Modal ***/
+.modal {
+  display: flex;
+  flex-direction: column;
+}
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header .closebtn {
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.modal-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 150px;
+  max-width: 300px;
+}
+
+.modal-title-label {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.modal-title-input {
+  overflow: hidden;
+  overflow-wrap: break-word;
+  height: 30px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+}
+
+.modal-title-input:focus {
+  box-shadow: inset 0 0 0 2px #0079bf;
+}
+
 .modal-btn {
   background-color: rgba(9,30,66,.04);
   box-shadow: none;
@@ -436,14 +477,18 @@ body {
   cursor: pointer;
   height: 32px;
   margin-top: 8px;
-  min-width: 144px;
-  max-width: 300px;
+  max-width: 144px;
   overflow: hidden;
   padding: 6px 12px;
   white-space: nowrap;
   transition-duration: 85ms;
   transition-timing-function: ease;
 }
+
+.modal-btn:hover {
+  background-color: rgba(9,30,66,.08);
+}
+
 
 /*** 12 - Small Screen ***/
 @media screen and (max-width: 600px) {

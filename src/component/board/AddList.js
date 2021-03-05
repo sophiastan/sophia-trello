@@ -33,7 +33,7 @@ class AddList extends Component {
       return (
         <div className='add-list' onClick={() => this.setEditing(true)}>
           <PlusIcon marginRight={6} />
-          { this.props.listLength > 0 ? 'Add another list' : 'Add a list'}
+          { this.props.listsLength > 0 ? 'Add another list' : 'Add a list'}
         </div>
       );
     }

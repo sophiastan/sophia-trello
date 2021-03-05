@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import CardModal from './CardModal';
-// import EditableLabel from 'react-editable-label';
-// import { IoArchiveOutline } from 'react-icons/io5';
-// import Modal from 'react-modal';
 
 /**
  * Represents a Card
@@ -45,9 +42,6 @@ class Card extends Component {
         <button className='card-btn' onClick={() => this.showModal(true)}>
           {this.state.taskText}
         </button>
-        {/* <button onClick={this.deleteCard}>
-          <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
-        </button> */}
         { this.state.isShown ?
           <CardModal isShown={this.state.isShown} showModal={this.showModal}
             taskText={this.state.taskText} saveTaskText={this.saveTaskText} 

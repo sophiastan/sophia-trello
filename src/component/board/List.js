@@ -9,7 +9,7 @@ class List extends Component {
     super(props);
 
     this.state = {
-      title: this.props.title
+      title: this.props.title,
     }
   }
 

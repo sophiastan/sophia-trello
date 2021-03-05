@@ -40,7 +40,7 @@ class AddCard extends Component {
     }
       return (
         <form className='card-form' onSubmit={(e) => this.onSubmit(e)}>
-          <TextInput className='form-text' ref={input => this.textInput = input} aria-label="Add a task" />
+          <TextInput className='form-text' autoFocus ref={input => this.textInput = input} aria-label="Add a task" />
           <div className='btn-group'>
             <button className='add-btn'>Add Card</button>
             <CrossIcon onClick={() => this.setEditing(false)} />

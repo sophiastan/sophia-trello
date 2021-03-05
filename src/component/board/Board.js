@@ -62,7 +62,7 @@ class Board extends Component {
         <div className='board'>
           {lists}
           <div className='list-wrapper'>
-            <AddList listLength={this.state.lists.length} addList={(title) => this.addList(title)} />
+            <AddList listsLength={this.state.lists.length} addList={(title) => this.addList(title)} />
           </div>
         </div>
       </div>

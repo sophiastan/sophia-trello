@@ -1,6 +1,6 @@
 import React from 'react';
 import EditableLabel from 'react-editable-label';
-import { IoArchiveOutline } from 'react-icons/io5';
+import { IoArchiveOutline, IoCardOutline } from 'react-icons/io5';
 import Modal from 'react-modal';
 
 export const CardModal = (props) => {
@@ -15,19 +15,24 @@ export const CardModal = (props) => {
       style={{
         overlay: {
           backgroundColor: 'rgba(0, 0, 0, .64)'
-        },
-        content: {
-          display: 'flex',
-          flexDirection: 'column'
         }
       }}>
-      <label style={{ marginBottom: '8px' }}><b>Change Card Name: </b></label>
-      <EditableLabel initialValue={props.taskText}
-        save={value => props.saveTaskText(value)} />
-      <button className='modal-btn' onClick={props.deleteCard}>
-        <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
-          </button>
-      <button onClick={onShowModal}>close</button>
+      <div className='modal'>
+        <div className='modal-header'>
+          <div className='modal-item'>
+            <IoCardOutline fontSize='20px' style={{ marginRight: '10px' }} />
+            <EditableLabel
+              inputClass='modal-title-input'
+              labelClass='modal-title-label'
+              initialValue={props.taskText}
+              save={value => props.saveTaskText(value)} />
+          </div>
+          <div className='closebtn' onClick={onShowModal}>&times;</div>
+        </div>
+        <button className='modal-btn' onClick={props.deleteCard}>
+          <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
+      </button>
+      </div>
     </Modal>
   )
 }

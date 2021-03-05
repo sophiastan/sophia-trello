@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import EditableLabel from 'react-editable-label';
 import { Dialog, Pane } from 'evergreen-ui';
 import { IoArchiveOutline } from 'react-icons/io5';
@@ -8,35 +8,30 @@ class Card extends Component {
     super(props);
 
     this.state = {
+      id: this.props.id,
       taskText: this.props.taskText,
       isShown: false
     }
   }
 
-  
-}
-
-export const Card = (props) => {
-  const [taskText, setTaskText] = useState(props.taskText);
-  const [ isShown, setIsShown ] = useState(false);
-  // console.log(props);
-
-  const saveTaskText = (value) => {
-    setTaskText(value);
-
-    props.editTaskText(value, props.listNumber)
+  // Edit Card Task
+  saveTaskText(value) {
+    this.setState({
+      taskText: value
+    })
   }
 
-  const deleteTask = () => {
+  deleteCard = () => {
     console.log(props.listNumber);
     console.log(props.timeId);
     props.deleteCard(props.listNumber, props.timeId);
   }
 
-  return (
-    <div onClick={() => setIsShown(true)} className='card'>
-      <label style={{ marginRight: '50px' }}>{taskText}</label>
-      <Dialog
+  render() {
+    return (
+      <div className='card' onClick={() => this.setState({ isShown: true})}>
+        <label style={{ marginRight: '50px' }}>{taskText}</label>
+        <Dialog
         isShown={isShown}
         title={props.taskText}
         onCloseComplete={() => setIsShown(false)}
@@ -52,8 +47,9 @@ export const Card = (props) => {
             </div>
           </Pane>
       </Dialog>
-    </div>
-  );
+      </div>
+    )
+  }
 }
 
 export default Card;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import BoardHeader from './BoardHeader';
 import List from './List';
 import AddList from './AddList';
-import defaultList from './defaultList';
+import defaultList from './DefaultList';
 
 class Board extends Component {
   boardList = defaultList;

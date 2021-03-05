@@ -4,13 +4,11 @@ const defaultList = [
     title: 'To Do',
     cards: [{
       taskText: 'Example Task 1',
-      listNumber: 0,
-      timeId: 0
+      id: 0
     },
     {
       taskText: 'Example Task 2',
-      listNumber: 0,
-      timeId: 1
+      id: 1
     }]
   },
   {
@@ -18,8 +16,7 @@ const defaultList = [
     title: 'Doing',
     cards: [{
       taskText: 'WIP',
-      listNumber: 1,
-      timeId: 2
+      id: 2
     }]
   },
   {
@@ -27,8 +24,7 @@ const defaultList = [
     title: 'Done',
     cards: [{
       taskText: 'Complete Task 1',
-      listNumber: 2,
-      timeId: 3
+      id: 4
     }]
   }
 ];

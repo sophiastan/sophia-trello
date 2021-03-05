@@ -16,9 +16,9 @@ class Board extends Component {
   }
 
   // Add new list GET RID OF ID
-  addList(title, id) {
+  addList(title) {
     const newList = {
-      id: Date.now(),
+      id: Date.now() + 1,
       title,
       cards: []
     }
@@ -47,11 +47,16 @@ class Board extends Component {
 
   // Add new list
   deleteList(id) {
-    this.boardList.pop(this.boardList[id]);
+    console.log(id);
+    console.log(this.state.lists);
+    const boardList = this.boardList.filter(function(item) {
+      return item.id !== id;
+    })
+    console.log(boardList);
 
-    // Sync state and localStorage
+    // Sync state
     this.setState({
-      lists: this.boardList
+      lists: boardList
     })
   }
 
@@ -145,7 +150,7 @@ class Board extends Component {
         <div className='board'>
           {lists}
           <div className='list-wrapper'>
-            <AddList addList={(title, id) => this.addList(title, id)} />
+            <AddList addList={(title) => this.addList(title)} />
           </div>
         </div>
       </div>

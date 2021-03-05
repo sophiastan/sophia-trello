@@ -1,8 +1,8 @@
 import React from 'react';
 // import { Dialog, Pane } from 'evergreen-ui';
-// import EditableLabel from 'react-editable-label';
-// import { IoArchiveOutline } from 'react-icons/io5';
-// import Modal from 'react-modal';
+import EditableLabel from 'react-editable-label';
+import { IoArchiveOutline } from 'react-icons/io5';
+import Modal from 'react-modal';
 
 export const CardModal = (props) => {
 
@@ -11,38 +11,32 @@ export const CardModal = (props) => {
   }
 
   return (
-    // <Dialog
-    //   isShown={isShown}
-    //   title={props.taskText}
-    //   onCloseComplete={() => setIsShown(false)}
-    // >
-    //   <Pane>
-    //     <div style={{ display: 'flex', flexDirection: 'column' }}>
-    //       <label style={{ marginBottom: '8px' }}><b>Change Card Name: </b></label>
-    //       <EditableLabel initialValue={taskText} 
-    //         save={value => saveTaskText(value)} />
-    //       <button className='card-btn' onClick={deleteTask}>
-    //         <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
-    //       </button>
-    //       </div>
-    //     </Pane>
-    // </Dialog>
-    <div className='board-menu'>
-      <div className='closebtn' onClick={onShowModal}>&times;</div>
-      <h3>hi</h3>
-      <h2>saved</h2>
-    </div>
-    // <Modal
-    //   isOpen={props.isShown}
-    //   style={{
-    //     overlay: {
-    //       backgroundColor: 'rgba(0, 0, 0, .64)'
-    //     }
-    //   }}
-    //   >
-    //   <h2>hi</h2>
-    //   <button onClick={onShowModal}>close</button>
-    // </Modal>
+    // <div className='board-menu'>
+    //   <div className='closebtn' onClick={onShowModal}>&times;</div>
+    //   <h3>hi</h3>
+    //   <h2>saved</h2>
+    // </div>
+    <Modal
+      isOpen={props.isShown}
+      style={{
+        overlay: {
+          backgroundColor: 'rgba(0, 0, 0, .64)'
+        },
+        content: {
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-evenly'
+        }
+      }}
+    >
+      <label style={{ marginBottom: '8px' }}><b>Change Card Name: </b></label>
+      <EditableLabel initialValue={props.taskText}
+        save={value => props.saveTaskText(value)} />
+      <button className='modal-btn' onClick={props.deleteCard}>
+        <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
+          </button>
+      <button onClick={onShowModal}>close</button>
+    </Modal>
     // <div className='modal'>
     //   <div className='modal-content'>
     //     <span className='close' >&times;</span>
@@ -53,20 +47,3 @@ export const CardModal = (props) => {
 }
 
 export default CardModal;
-
-{/* <Dialog
-      isShown={isShown}
-      title={props.taskText}
-      onCloseComplete={() => setIsShown(false)}
-    >
-      <Pane>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <label style={{ marginBottom: '8px' }}><b>Change Card Name: </b></label>
-          <EditableLabel initialValue={taskText} 
-            save={value => saveTaskText(value)} />
-          <button className='card-btn' onClick={deleteTask}>
-            <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
-          </button>
-          </div>
-        </Pane>
-    </Dialog> */}

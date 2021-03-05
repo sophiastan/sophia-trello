@@ -15,8 +15,15 @@ class List extends Component {
     super(props);
 
     this.state = {
-      listData: props.listData
+      listData: props.listData,
+      editing: false
     }
+  }
+
+  setEditing(editing) {
+    this.setState({
+      editing
+    });
   }
 
   // Edit list title
@@ -73,15 +80,15 @@ class List extends Component {
         cardData={card}
         deleteCard={(id) => this.deleteCard(id)}
       />);
-    })
+    });
 
     return (
       <div className='list-wrapper'>
         <div className='list'>
           <div className='list-header'>
             <EditableLabel
-              inputClass='list-header-title-input'
-              labelClass='list-header-title-label'
+              inputClass='list-header-input'
+              labelClass='list-header-label'
               initialValue={this.state.listData.title}
               save={value => this.saveTitle(value)} />
             <SelectMenu
@@ -93,7 +100,7 @@ class List extends Component {
                   .map(label => ({ label, value: label }))
               }
               onSelect={item => this.deleteList(item)}>
-              <MoreIcon color='muted' />
+              <div className='list-header-more'><MoreIcon  color='muted' /></div>
             </SelectMenu>
           </div>
           <div className='card-list'>

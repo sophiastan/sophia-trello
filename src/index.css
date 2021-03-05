@@ -66,6 +66,10 @@ body {
   font-weight: 700;
 }
 
+.app-header-tab:hover {
+  background-color: hsla(0,0%,100%,.5) !important;
+}
+
 
 /*** 4 - Board Header ***/
 .board-header {
@@ -186,7 +190,7 @@ body {
 }
 
 .board-menu-navigation-item:hover {
-  background-color: rgba(0,0,0,8);
+  background-color: rgba(0,0,0,.08);
 }
 
 .board-menu-navigation-item-group {

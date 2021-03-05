@@ -11,7 +11,8 @@
 *  8 - List
 *  9 - Add Card
 *  10 - Card
-*  11 - Small Screen
+*  11 - Card Modal
+*  12 - Small Screen
 */
 
 /*** 1 - Body ***/
@@ -424,6 +425,7 @@ body {
   text-align: left;
 }
 
+/*** 11 - Card Modal ***/
 .modal-btn {
   background-color: rgba(9,30,66,.04);
   box-shadow: none;
@@ -443,7 +445,7 @@ body {
   transition-timing-function: ease;
 }
 
-/*** 11 - Small Screen ***/
+/*** 12 - Small Screen ***/
 @media screen and (max-width: 600px) {
   .main, .header, .board, .board-header {
     flex-direction: column;

@@ -15,7 +15,7 @@ class Board extends Component {
     }
   }
 
-  // Add new list GET RID OF ID
+  // Add new list
   addList(title) {
     const newList = {
       id: Date.now() + 1,
@@ -25,7 +25,7 @@ class Board extends Component {
 
     this.boardList.push(newList);
 
-    // Sync state and localStorage
+    // Sync state
     this.setState({
       lists: this.boardList
     })
@@ -39,7 +39,7 @@ class Board extends Component {
       }
     }
 
-    // Sync state and localStorage
+    // Sync state
     this.setState({
       lists: this.boardList
     });
@@ -48,7 +48,7 @@ class Board extends Component {
   // Add new list
   deleteList(id) {
     console.log(id);
-    console.log(this.state.lists);
+    console.log(this.boardList);
     const boardList = this.boardList.filter(function(item) {
       return item.id !== id;
     })
@@ -79,7 +79,7 @@ class Board extends Component {
       this.boardList[listNumber].cards.push(newTask);
     }
 
-    // Sync state and localStorage
+    // Sync state
     this.setState({
       lists: this.boardList
     })
@@ -102,7 +102,7 @@ class Board extends Component {
 
     console.log(this.boardList);
 
-    // Sync state and localStorage
+    // Sync state
     this.setState({
       lists: this.boardList
     })
@@ -126,7 +126,7 @@ class Board extends Component {
 
     // console.log(parsedLS);
 
-    // Sync state and localStorage
+    // Sync state
     this.setState({
       lists: this.boardList
     })
@@ -150,7 +150,7 @@ class Board extends Component {
         <div className='board'>
           {lists}
           <div className='list-wrapper'>
-            <AddList addList={(title) => this.addList(title)} />
+            <AddList listLength={this.boardList.length} addList={(title) => this.addList(title)} />
           </div>
         </div>
       </div>

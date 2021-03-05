@@ -1,4 +1,4 @@
-const defaultList = [
+const DefaultList = [
   {
     id: 0,
     title: 'To Do',
@@ -29,4 +29,4 @@ const defaultList = [
   }
 ];
 
-export default defaultList;
+export default DefaultList;

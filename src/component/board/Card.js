@@ -12,7 +12,6 @@ class Card extends Component {
       id: props.cardData.id,
       taskText: props.cardData.taskText,
       isShown: props.isShown ? props.isShown : false
-      // isShown: false
     }
   }
 

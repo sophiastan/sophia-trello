@@ -13,10 +13,8 @@ class AddCard extends Component {
   onSubmit(event) {
     event.preventDefault();
     const taskText = this.textInput.value.trim();
-    const listNumber = this.props.formNum;
-    console.log(listNumber);
     if (taskText && this.props.addCard) {
-      this.props.addCard(taskText, listNumber);
+      this.props.addCard(taskText);
     }
     this.textInput.value = '';
   }

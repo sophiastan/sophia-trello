@@ -9,31 +9,56 @@ class List extends Component {
     super(props);
 
     this.state = {
-      title: this.props.title,
+      listData: props.listData
     }
   }
 
-  saveTitle(value) {
+  // Edit list title
+  saveTitle(title) {
+    const list = this.state.listData;
+    list.title = title;
     this.setState({
-      title: value
-    })
-
-    this.props.editTitleList(value, this.props.id);
+      listData: list
+    });
   }
 
   deleteList(item) {
     if (item.value === 'Archive This List') {
-      this.props.deleteList(this.props.id);
+      this.props.deleteList(this.state.listData.id);
     }
   }
 
+  addCard = (text) => {
+    const list = this.state.listData;
+
+    const newTask = {
+      id: list.cards.length + 1,
+      taskText: text
+    }
+
+    list.cards.push(newTask);
+
+    this.setState({
+      listData: list
+    })
+  }
+
+  deleteCard(id) {
+    const list = this.state.listData;
+    list.cards = list.cards.filter((card) => card.id !== id);
+
+    this.setState({
+      listData: list
+    });
+  }
+
   render() {
-    const cards = this.props.cards.map((card, index) => {
-      return (
-        <Card key={index} {...card} 
-          editTaskText={this.props.editTaskText} 
-          deleteCard={this.props.deleteCard} />
-      );
+    console.log(this.state.listData.cards);
+    const cards = this.state.listData.cards.map((card, index) => {
+      return (<Card key={index}
+        cardData={card}
+        deleteCard={(id) => this.deleteCard(id)}
+      />);
     })
 
     return (
@@ -43,7 +68,7 @@ class List extends Component {
             <EditableLabel
               inputClass='list-header-title-input'
               labelClass='list-header-title-label'
-              initialValue={this.state.title}
+              initialValue={this.state.listData.title}
               save={value => this.saveTitle(value)} />
             <SelectMenu
               title='List Actions'
@@ -59,7 +84,7 @@ class List extends Component {
           </div>
           <div className='card-list'>
             {cards}
-            <AddCard formNum={this.props.id} addCard={this.props.addCard} />
+            <AddCard addCard={this.addCard} />
           </div>
         </div>
       </div>

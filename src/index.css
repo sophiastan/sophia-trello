@@ -385,23 +385,6 @@ body {
   background-color: #F9F9FB;
 }
 
-.card-btn {
-  background-color: rgba(9,30,66,.04);
-  border: none;
-  border-radius: 3px;
-  box-sizing: border-box;
-  cursor: pointer;
-  height: 32px;
-  margin-top: 8px;
-  max-width: 300px;
-  overflow: hidden;
-  padding: 6px 12px;
-  user-select: none;
-  white-space: nowrap;
-  text-align: left;
-}
-
-
 /* FOR SMALL SCREENS */
 @media screen and (max-width: 600px) {
   .main, .header, .board, .board-header {

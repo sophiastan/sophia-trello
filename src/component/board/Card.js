@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import EditableLabel from 'react-editable-label';
-import { Dialog, Pane } from 'evergreen-ui';
-import { IoArchiveOutline } from 'react-icons/io5';
+import CardModal from './CardModal';
 
 class Card extends Component {
   constructor(props) {
     super(props);
 
+    console.log(props.cardData);
     this.state = {
-      id: this.props.id,
-      taskText: this.props.taskText,
-      isShown: false
+      id: props.cardData.id,
+      taskText: props.cardData.taskText,
+      isShown: props.isShown ? props.isShown : false
     }
+    console.log(this.state.taskText);
   }
 
   // Edit Card Task
@@ -22,31 +22,27 @@ class Card extends Component {
   }
 
   deleteCard = () => {
-    console.log(props.listNumber);
-    console.log(props.timeId);
-    props.deleteCard(props.listNumber, props.timeId);
+    this.props.deleteCard(this.state.id);
+  }
+
+  showModal = (value) => {
+    this.setState({
+      isShown: value
+    });
   }
 
   render() {
     return (
-      <div className='card' onClick={() => this.setState({ isShown: true})}>
-        <label style={{ marginRight: '50px' }}>{taskText}</label>
-        <Dialog
-        isShown={isShown}
-        title={props.taskText}
-        onCloseComplete={() => setIsShown(false)}
-      >
-        <Pane>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <label style={{ marginBottom: '8px' }}><b>Change Card Name: </b></label>
-            <EditableLabel initialValue={taskText} 
-              save={value => saveTaskText(value)} />
-            <button className='card-btn' onClick={deleteTask}>
-              <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
-            </button>
-            </div>
-          </Pane>
-      </Dialog>
+      <div className='card'>
+        <label className='card-label' onClick={() => this.setState({ isShown: true })}>
+          {this.state.taskText}
+        </label>
+        { this.state.isShown ?
+          <CardModal isShown={this.state.isShown} showModal={this.showModal}
+            saveTaskText={this.saveTaskText} deleteCard={this.deleteCard} />
+          :
+          <div></div>
+        }
       </div>
     )
   }

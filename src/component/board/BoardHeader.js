@@ -46,7 +46,7 @@ class BoardHeader extends Component {
             <MoreIcon color='muted' marginRight={8} />Show Menu
           </Tab>
           :
-          <BoardMenu showMenu={this.state.showMenu} showBoardMenu={this.showBoardMenu} />
+          <BoardMenu showBoardMenu={this.showBoardMenu} />
         }
       </Tablist>
     );

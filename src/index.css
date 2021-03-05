@@ -1,3 +1,21 @@
+/* 
+*  CSS TABLE OF CONTENTS
+*   
+*  1 - Body
+*  2 - Main
+*  3 - Header
+*  4 - Board Header
+*  5 - Board Menu
+*  6 - Board
+*  7 - Add List
+*  8 - List
+*  9 - Add Card
+*  10 - Card
+*  11 - Card Modal
+*  12 - Small Screen
+*/
+
+/*** 1 - Body ***/
 body {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
   background-color: aliceblue;
@@ -7,7 +25,7 @@ body {
 }
 
 
-/* MAIN */
+/*** 2 - Main ***/
 .main {
   height: 100%;
   display: flex;
@@ -15,7 +33,7 @@ body {
 }
 
 
-/* HEADER */
+/*** 3 - Header ***/
 .app-header {
   width: 100%;
   background-color: rgba(0,0,0,.32);
@@ -48,14 +66,14 @@ body {
 }
 
 
-/* BOARD HEADER */
+/*** 4 - Board Header ***/
 .board-header {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  padding: 8px 4px 4px 2px;
+  padding: 8px 4px 4px 8px;
 }
 
 .header-tab {
@@ -89,7 +107,7 @@ body {
 }
 
 
-/* BOARD MENU */
+/*** 5 - Board Menu ***/
 .board-menu {
   width: 339px;
   box-shadow: 0 12px 24px -6px rgb(9 30 66 / 25%), 0 0 0 1px rgb(9 30 66 / 8%);
@@ -167,7 +185,7 @@ body {
 }
 
 .board-menu-navigation-item:hover {
-  background-color: rgba(0,0,0,.08);
+  background-color: rgba(0,0,0,8);
 }
 
 .board-menu-navigation-item:active {
@@ -223,16 +241,16 @@ body {
   font-size: 30px;
 }
 
-
-/* BOARD */
+/*** 6 - Board ***/
 .board {
   flex-direction: row !important;
   padding-bottom: 8px;
   margin-bottom: 8px;
+  margin-left: 8px;
 }
 
 
-/* ADD LIST */
+/*** 7 - Add List ***/
 .add-list {
   padding: 10px 8px;
   box-sizing: border-box;
@@ -280,7 +298,7 @@ body {
 
 
 
-/* LIST */
+/*** 8 - List ***/
 .list-wrapper {
   width: 272px;
   margin: 4px 4px;
@@ -306,31 +324,44 @@ body {
   flex-direction: row;
   cursor: pointer;
   align-items: baseline;
+  justify-content: space-between;
 }
 
-.list-header-title-input {
+.list-header-input {
   overflow: hidden;
   overflow-wrap: break-word;
   height: 100%;
   padding: 10px 8px !important;
   width: 228px;
-  max-height: 256px;
+  height: 30px;
   border-radius: 3px;
   box-sizing: border-box;
-  flex-grow: 1;
+  outline: none;
+  border: none;
+  margin: 4px 8px;
 }
 
-.list-header-title-input:focus {
+.list-header-input:focus {
   box-shadow: inset 0 0 0 2px #0079bf;
 }
 
-.list-header-title-label {
+.list-header-label {
   max-width: 228px;
   padding: 10px 8px;
   min-height: 20px;
-  flex: 1;
   overflow: hidden;
   overflow-wrap: break-word;
+}
+
+.list-header-more {
+  width: 21.6px;
+  border-radius: 3px;
+  padding: 6px;
+  margin-right: 6px;
+}
+
+.list-header-more:hover {
+  background-color: rgba(0,0,0,.08);
 }
 
 .card-list {
@@ -339,7 +370,7 @@ body {
 }
 
 
-/* ADD CARD */
+/*** 9 - Add Card ***/
 .add-card {
   display: flex;
   color: #5e6c84;
@@ -364,7 +395,7 @@ body {
 }
 
 
-/* CARD */
+/*** 10 - Card ***/
 .card {
   flex-direction: row;
   clear: both;
@@ -386,23 +417,35 @@ body {
 }
 
 .card-btn {
-  background-color: rgba(9,30,66,.04);
+  box-shadow: none;
   border: none;
-  border-radius: 3px;
-  box-sizing: border-box;
-  cursor: pointer;
-  height: 32px;
-  margin-top: 8px;
-  max-width: 300px;
-  overflow: hidden;
-  padding: 6px 12px;
-  user-select: none;
-  white-space: nowrap;
+  background: none;
+  outline: none;
+  width: 100%;
   text-align: left;
 }
 
+/*** 11 - Card Modal ***/
+.modal-btn {
+  background-color: rgba(9,30,66,.04);
+  box-shadow: none;
+  border: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+  text-align: left;
+  cursor: pointer;
+  height: 32px;
+  margin-top: 8px;
+  min-width: 144px;
+  max-width: 300px;
+  overflow: hidden;
+  padding: 6px 12px;
+  white-space: nowrap;
+  transition-duration: 85ms;
+  transition-timing-function: ease;
+}
 
-/* FOR SMALL SCREENS */
+/*** 12 - Small Screen ***/
 @media screen and (max-width: 600px) {
   .main, .header, .board, .board-header {
     flex-direction: column;

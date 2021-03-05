@@ -1,46 +1,63 @@
-import React, { useState } from 'react';
-import EditableLabel from 'react-editable-label';
-import { Dialog, Pane } from 'evergreen-ui';
-import { IoArchiveOutline } from 'react-icons/io5';
+import React, { Component } from 'react';
+import CardModal from './CardModal';
+// import EditableLabel from 'react-editable-label';
+// import { IoArchiveOutline } from 'react-icons/io5';
+// import Modal from 'react-modal';
 
-export const Card = (props) => {
-  const [taskText, setTaskText] = useState(props.taskText);
-  const [ isShown, setIsShown ] = useState(false);
-  // console.log(props);
+/**
+ * Represents a Card
+ */
+class Card extends Component {
+  constructor(props) {
+    super(props);
 
-  const saveTaskText = (value) => {
-    setTaskText(value);
-
-    props.editTaskText(value, props.listNumber)
+    this.state = {
+      id: props.cardData.id,
+      taskText: props.cardData.taskText,
+      isShown: props.isShown ? props.isShown : false
+      // isShown: false
+    }
   }
 
-  const deleteTask = () => {
-    console.log(props.listNumber);
-    console.log(props.timeId);
-    props.deleteCard(props.listNumber, props.timeId);
+  // Edit Card Task
+  saveTaskText = (value) => {
+    this.setState({
+      taskText: value
+    })
   }
 
-  return (
-    <div onClick={() => setIsShown(true)} className='card'>
-      <label style={{ marginRight: '50px' }}>{taskText}</label>
-      <Dialog
-        isShown={isShown}
-        title={props.taskText}
-        onCloseComplete={() => setIsShown(false)}
-      >
-        <Pane>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <label style={{ marginBottom: '8px' }}><b>Change Card Name: </b></label>
-            <EditableLabel initialValue={taskText} 
-              save={value => saveTaskText(value)} />
-            <button className='card-btn' onClick={deleteTask}>
-              <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
-            </button>
-            </div>
-          </Pane>
-      </Dialog>
-    </div>
-  );
+  // Delete card
+  deleteCard = () => {
+    this.props.deleteCard(this.state.id);
+  }
+
+  // Shows modal
+  showModal = (isShown) => {
+    console.log(isShown);
+    this.setState({
+      isShown
+    });
+  }
+
+  render() {
+    return (
+      <div className='card'>
+        <button className='card-btn' onClick={() => this.showModal(true)}>
+          {this.state.taskText}
+        </button>
+        {/* <button onClick={this.deleteCard}>
+          <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
+        </button> */}
+        { this.state.isShown ?
+          <CardModal isShown={this.state.isShown} showModal={this.showModal}
+            taskText={this.state.taskText} saveTaskText={this.saveTaskText} 
+            deleteCard={this.deleteCard} />
+          :
+          <div></div>
+        }
+      </div>
+    )
+  }
 }
 
 export default Card;

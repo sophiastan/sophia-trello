@@ -4,10 +4,13 @@ import { IoInformationCircleOutline, IoHomeOutline } from 'react-icons/io5';
 import { FaRegBell } from 'react-icons/fa';
 import logo from '../images/prairieHealthLogo.png';
 
+/**
+ * Represents main header
+ */
 class Header extends Component {
   render() {
     return (
-      <Tablist className='app-header' marginBottom={4}>
+      <Tablist className='app-header'>
         <Tab className='app-header-tab'><LayoutGridIcon color="white" /></Tab>
         <Tab className='app-header-tab'><IoHomeOutline style={{ fontSize: '18px'}} color="white" /></Tab>
         <Tab className='app-header-tab'><ControlIcon marginRight={6} color="white" /><b>Boards</b></Tab>

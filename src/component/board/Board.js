@@ -6,6 +6,8 @@ import defaultList from './DefaultList';
 
 class Board extends Component {
 
+  nextId = 10;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -16,8 +18,9 @@ class Board extends Component {
 
   // Add new list
   addList(title) {
+    this.nextId++;
     const newList = {
-      id: this.state.lists.length + 1,
+      id: this.nextId,
       title,
       cards: []
     }
@@ -43,8 +46,8 @@ class Board extends Component {
   }
 
   render() {
-    const lists = this.state.lists.map((list, index) => (
-      <List key={index}
+    const lists = this.state.lists.map((list) => (
+      <List key={list.id}
         listData={list}
         deleteList={(id) => this.deleteList(id)}
       />

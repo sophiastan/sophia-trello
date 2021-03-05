@@ -5,6 +5,8 @@ import { SelectMenu, MoreIcon, Position } from 'evergreen-ui';
 import EditableLabel from 'react-editable-label';
 
 class List extends Component {
+  nextId = 10;
+
   constructor(props) {
     super(props);
 
@@ -31,8 +33,9 @@ class List extends Component {
   addCard = (text) => {
     const list = this.state.listData;
 
+    this.nextId++;
     const newTask = {
-      id: list.cards.length + 1,
+      id: this.nextId,
       taskText: text
     }
 
@@ -54,8 +57,8 @@ class List extends Component {
 
   render() {
     console.log(this.state.listData.cards);
-    const cards = this.state.listData.cards.map((card, index) => {
-      return (<Card key={index}
+    const cards = this.state.listData.cards.map((card) => {
+      return (<Card key={card.id}
         cardData={card}
         deleteCard={(id) => this.deleteCard(id)}
       />);

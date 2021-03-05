@@ -1,4 +1,7 @@
 import React from 'react';
+// import { Dialog, Pane } from 'evergreen-ui';
+// import EditableLabel from 'react-editable-label';
+// import { IoArchiveOutline } from 'react-icons/io5';
 // import Modal from 'react-modal';
 
 export const CardModal = (props) => {
@@ -8,6 +11,22 @@ export const CardModal = (props) => {
   }
 
   return (
+    // <Dialog
+    //   isShown={isShown}
+    //   title={props.taskText}
+    //   onCloseComplete={() => setIsShown(false)}
+    // >
+    //   <Pane>
+    //     <div style={{ display: 'flex', flexDirection: 'column' }}>
+    //       <label style={{ marginBottom: '8px' }}><b>Change Card Name: </b></label>
+    //       <EditableLabel initialValue={taskText} 
+    //         save={value => saveTaskText(value)} />
+    //       <button className='card-btn' onClick={deleteTask}>
+    //         <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
+    //       </button>
+    //       </div>
+    //     </Pane>
+    // </Dialog>
     <div className='board-menu'>
       <div className='closebtn' onClick={onShowModal}>&times;</div>
       <h3>hi</h3>

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import CardModal from './CardModal';
+// import CardModal from './CardModal';
+import { Dialog, Pane } from 'evergreen-ui';
+import EditableLabel from 'react-editable-label';
+import { IoArchiveOutline } from 'react-icons/io5';
 
 class Card extends Component {
   constructor(props) {
@@ -37,12 +40,31 @@ class Card extends Component {
         <label className='card-label' onClick={() => this.setState({ isShown: true })}>
           {this.state.taskText}
         </label>
-        { this.state.isShown ?
+        <button className='card-btn' onClick={this.deleteCard}>
+                <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
+          </button>
+        {/* <Dialog
+          isShown={this.state.isShown}
+          title={this.state.taskText}
+          onCloseComplete={() => this.setState({ showModal: false})}
+        >
+          <Pane>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <label style={{ marginBottom: '8px' }}><b>Change Card Name: </b></label>
+              <EditableLabel initialValue={this.state.taskText}
+                save={value => this.saveTaskText(value)} />
+              <button className='card-btn' onClick={this.deleteCard}>
+                <IoArchiveOutline style={{ marginRight: '10px' }} />Archive
+          </button>
+            </div>
+          </Pane>
+        </Dialog> */}
+        {/* { this.state.isShown ?
           <CardModal isShown={this.state.isShown} showModal={this.showModal}
             saveTaskText={this.saveTaskText} deleteCard={this.deleteCard} />
           :
           <div></div>
-        }
+        } */}
       </div>
     )
   }
